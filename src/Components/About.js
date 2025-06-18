@@ -1,38 +1,19 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myTheme, SetTheme] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-
-  const[toggleButton,SetButton] = useState("Enable dark theme");
-
-  const toggleTheme = () => {
-    if (myTheme.color === "white") {
-      SetTheme({
-        color: "black",
-        backgroundColor: "white",
-      });
-      SetButton("Enable dark theme");
-    }
-    else{
-        SetTheme({
-        color: "white",
-        backgroundColor: "black",
-      });
-      SetButton("Enable light theme");
-    }
-  };
+export default function About(props) {
+  let myTheme={
+    color:props.mode==='dark'?'white':'black',
+    backgroundColor:props.mode==='dark'?'rgb(25 29 53)':'white'
+  }
 
   return (
     <div className="container my-3">
-      <h1 className="my-3">About Us</h1>
+      <h1 className="my-3" style={myTheme}>About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={myTheme}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button"
+              className="accordion-button fw-bold"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -61,9 +42,9 @@ export default function About() {
           </div>
         </div>
         <div className="accordion-item" style={myTheme}>
-          <h2 className="accordion-header">
+          <h2 className="accordion-header ">
             <button
-              className="accordion-button collapsed"
+              className="accordion-button collapsed fw-bold"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseTwo"
@@ -94,7 +75,7 @@ export default function About() {
         <div className="accordion-item" style={myTheme}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed"
+              className="accordion-button collapsed fw-bold"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseThree"
@@ -124,11 +105,6 @@ export default function About() {
         </div>
       </div>
 
-      <div className="container my-3">
-        <button className="btn btn-primary" onClick={toggleTheme}>
-          {toggleButton}
-        </button>
-      </div>
     </div>
   );
 }

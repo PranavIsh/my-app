@@ -5,7 +5,7 @@ import {Link } from 'react-router-dom';
 export default function Navbar(props) {
   return (
     <div>
-      <nav className={`navbar navbar-expand-lg`} style={{ backgroundColor: props.mode ,color:props.mode==='black'?'white':'black'}}>
+      <nav className={`navbar navbar-expand-lg bg-body-tertiary bg-${props.mode}`} data-bs-theme={props.mode}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -49,28 +49,28 @@ export default function Navbar(props) {
               {/* <button className="btn btn-outline-success" type="submit">
                 Search
               </button> */}
-              <div class="form-check form-switch">
+              <div className="form-check form-switch">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   role="switch"
                   id="isDark"
-                  onClick={() => props.toggleMode('dark')}
+                  onClick={props.toggleMode}
                 />
-                <label class={`form-check-label`} style={{color:props.mode==='black'?'white':'black'}} id="lblmode" htmlForfor="switchCheckDefault">
+                <label className={`form-check-label text-${props.mode==='dark'?'light':'dark'}`} id="lblmode" htmlFor="switchCheckDefault">
                   {props.labelText}
                 </label>
               </div>
 
-              {/* <div class="form-check form-switch">
+              {/* <div className="form-check form-switch">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   role="switch"
                   id="isDanger"
                   onClick={() => props.toggleMode('danger')}
                 />
-                <label class={`form-check-label`} style={{ color:props.mode==='black'?'white':'black'}} id="lblmode2" htmlForfor="switchCheckDefault">
+                <label className={`form-check-label`} style={{ color:props.mode==='black'?'white':'black'}} id="lblmode2" htmlForfor="switchCheckDefault">
                   Red Mode
                 </label>
               </div> */}

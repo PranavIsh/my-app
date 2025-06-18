@@ -49,17 +49,17 @@ export default function TestForm(props) {
           <textarea className="form-control" id="myBox" rows="8" value={Text} onChange={textChnageHandel}></textarea>
         </div>
         <div className="mb-3">
-            <button className="btn btn-primary w-30 mx-2" onClick={onUpClick}>Convert to UpperCase</button>
-            <button className="btn btn-primary w-30 mx-2" onClick={onlwClick}>Convert to LowerCase</button>
-            <button className="btn btn-primary w-30 mx-2" onClick={onfontClick}>Change Font</button>
-            <button className="btn btn-primary w-30 mx-2" onClick={onClearClick}>Clear Text</button>
+            <button disabled={Text.length === 0} className="btn btn-primary w-30 mx-2 my-1" onClick={onUpClick}>Convert to UpperCase</button>
+            <button disabled={Text.length === 0} className="btn btn-primary w-30 mx-2 my-1" onClick={onlwClick}>Convert to LowerCase</button>
+            <button disabled={Text.length === 0} className="btn btn-primary w-30 mx-2 my-1" onClick={onfontClick}>Change Font</button>
+            <button disabled={Text.length === 0} className="btn btn-primary w-30 mx-2 my-1" onClick={onClearClick}>Clear Text</button>
         </div>
       </div>
       <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
         <h1>Your Text Summary</h1>
-        <p><span className="text-danger">{Text.trim().split(/\s+/).filter(word => word.length > 0).length}</span> words and <span className="text-success">{Text.length}</span> characters</p>
+        <p><span className="text-danger">{Text.split(" ").filter((element)=>{return element.length>0}).length}</span> words and <span className="text-success">{Text.length}</span> characters</p>
         <h2>Preview</h2>
-        <p id="prev">{Text.length>0?Text:'Enter something in above textbox to preview it..'}</p>
+        <p id="prev">{Text.length>0?Text:'Nothing to preview'}</p>
       </div>
     </>
   );
