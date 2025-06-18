@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar";
 import TestForm from "./Components/TestForm";
 import Alerts from "./Components/Alerts";
 // import { BrowserRouter } from 'react-router-dom';
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -96,8 +96,12 @@ function App() {
         labelText={lbltext}
       />
       <Alerts alert={alert} />
-
-      <Routes>
+      <TestForm
+        heading="Enter text to analyze"
+        mode={mode}
+        alerts={showAlert}
+      />
+      {/* <Routes>
         <Route
           exact
           path="/"
@@ -110,7 +114,7 @@ function App() {
           }
         />
         <Route exact path="/about" element={<About />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 }
