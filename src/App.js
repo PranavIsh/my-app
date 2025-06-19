@@ -9,26 +9,20 @@ import Alerts from "./Components/Alerts";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+  
   const [mode, setMode] = useState("light");
   const [lbltext, setlblText] = useState("Enable dark mode");
   const [alert, setAlert] = useState(null);
 
   const toggleMode = () => {
-    debugger;
+    
     if (mode === "light") {
       
         setMode("dark");
         setlblText("Enable light mode");
         document.body.style.backgroundColor = "rgb(25 29 53)";
 
-        let elements = document.getElementsByTagName("textarea");
-        
-        for (let i = 0; i < elements.length; i++) {
-          elements[i].style.color = "white";
-          elements[i].style.backgroundColor = "#434343";
-
-          showAlert("Dark mode has been applied", "success");
-        }
+        showAlert("Dark mode has been applied", "success");
     } else {
       defaultTheme();
       showAlert("Light mode has been applied", "success");
@@ -40,11 +34,6 @@ function App() {
     setlblText("Enable dark mode");
     document.body.style.backgroundColor = "white";
 
-    let elements = document.getElementsByTagName("textarea");
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].style.color = "black";
-      elements[i].style.backgroundColor = "white";
-    }
   };
 
   const showAlert = (message, type) => {

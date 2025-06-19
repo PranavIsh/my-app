@@ -5,7 +5,6 @@ import React,{useState} from "react";
 export default function TestForm(props) {
     
     const onUpClick=()=>{
-        console.log("Button is clicked !!");
         setText(Text.toUpperCase());
         // setText(myBox.Text.)
         props.alerts('Text has been changed into upper case.','success');
@@ -27,7 +26,6 @@ export default function TestForm(props) {
     }
 
     const textChnageHandel=(event)=>{
-        console.log("Text is chnaged !!");
         setText(event.target.value);
     }
 
@@ -45,8 +43,7 @@ export default function TestForm(props) {
           <h1>{props.heading}</h1>
         </div>
         <div className="mb-3">
-          
-          <textarea className="form-control" id="myBox" rows="8" value={Text} onChange={textChnageHandel}></textarea>
+          <textarea className="form-control" id="myBox" style={{backgroundColor:props.mode==='dark'?'rgb(25 29 53)':'white',color:props.mode==='dark'?'white':'black'}} rows="8" value={Text} onChange={textChnageHandel}></textarea>
         </div>
         <div className="mb-3">
             <button disabled={Text.length === 0} className="btn btn-primary w-30 mx-2 my-1" onClick={onUpClick}>Convert to UpperCase</button>
@@ -57,7 +54,7 @@ export default function TestForm(props) {
       </div>
       <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
         <h1>Your Text Summary</h1>
-        <p><span className="text-danger">{Text.split(" ").filter((element)=>{return element.length>0}).length}</span> words and <span className="text-success">{Text.length}</span> characters</p>
+        <p><span className="text-danger">{Text.split(/\s+/).filter((element)=>{return element.length>0}).length}</span> words and <span className="text-success">{Text.length}</span> characters</p>
         <h2>Preview</h2>
         <p id="prev">{Text.length>0?Text:'Nothing to preview'}</p>
       </div>

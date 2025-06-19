@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {Link } from 'react-router-dom';
 
 export default function Navbar(props) {
+
+const [Active,setActive] = useState(null);
+
+const markActive=(id)=>{
+  setActive(id);
+}
+
   return (
     <div>
       <nav className={`navbar navbar-expand-lg bg-body-tertiary bg-${props.mode}`} data-bs-theme={props.mode}>
@@ -24,17 +31,17 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link  className="nav-link active" aria-current="page" to="/">
+                <Link  className={`nav-link ${Active==='Home'?'active':''}`} onClick={()=>markActive('Home')} aria-current="page" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link  className="nav-link" to="/about">
+                <Link  className={`nav-link ${Active==='About'?'active':''}`} onClick={()=>markActive('About')} to="/about">
                   {props.aboutUs}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className={`nav-link ${Active==='Contact'?'active':''}`} onClick={()=>markActive('Contact')} to="/">
                   Contact
                 </Link>
               </li>
